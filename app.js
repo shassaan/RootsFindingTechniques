@@ -9,19 +9,23 @@ function listening(){
 
 app.get('/',(req,res,next)=>{
     let rootByBisection , rootByNewton , rootBySecant , rootByRegulaFalsi;
-    //rootByBisection = findRootByBisection();
+    rootByBisection = findRootByBisection();
     rootBySecant = findRootBySecant();
     rootByRegulaFalsi = findRootByRegulaFalsi();
-    //console.log("Root By Bisection is ",rootByBisection);
+    console.log("Root By Bisection is ",rootByBisection);
     console.log("Root By Secant is ",rootBySecant);
     console.log("Root By Regula Falsi is ",rootByRegulaFalsi);
+
+    console.log("Function Response By Bisection is ",funX(rootByBisection));
+    console.log("Function Response By By Secant is ",funX(rootBySecant));
+    console.log("Function Response By Regula Falsi is ",funX(rootByRegulaFalsi));
 });
 
 function funX(x){//sample function
     //function of which you want to find root
-    //return (x*x*x)+(x*x)-3*x-3;
+    return (x*x*x)+(x*x)-3*x-3;
     
-    return Math.sin(x)-5*x+2;
+    //return Math.sin(x)-5*x+2;
 }
 
 function bisect(x , y){
@@ -59,13 +63,14 @@ function secant(x,y){
 }
 
 function findRootBySecant(){
-    let x = 0.4 , y= 0.6,repX=0;
-    for(let n = 0;n < 5;n++){
+    let x = 0.4 , y= 0.6,repX=0,n=0;
+   while(n<10){
         x = secant(x,y);
         if(repX == x){
             break;
         }
         repX = x;
+        n++;
     }
     return x;
 }
