@@ -1,6 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
+var Term = require('./Derivative');
 app.listen(5000, listening);
 
 function listening() {
@@ -23,8 +24,14 @@ app.get('/', (req, res, next) => {
 
 function funX(x) {//sample function
     //function of which you want to find root
+    let term1 = new Term(1,x,3);
+    let term2 = new Term(1,x,2);
+    let term3 = new Term(3,x,1);
+    let term4 = new Term(3);
+     
 
-    return (x * x * x) + (x * x) - 3 * x - 3;
+    return term1.constant*(term1.variable*term1.variable*term1.variable) + term2.constant*(term2.variable*term2.variable) - term3.constant*term3.variable - term4.constant;
+    //return 1*(x * x * x) + 1*(x * x) - 3*(x * 1) - 3;
 
     //return Math.sin(x)-5*x+2;
 }
