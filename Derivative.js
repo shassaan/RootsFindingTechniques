@@ -6,9 +6,15 @@ class Term{
     }
 
 
-    Derivate() {
+    derivate() {
+        if(this.variable == undefined){
+            this.constant = 0;
+        }
         this.constant *=this.exponent;
         this.exponent -= 1;
+        if(this.exponent == 0){
+            this.variable = 1;
+        }
     }
 }
 

@@ -10,27 +10,31 @@ function listening() {
 
 app.get('/', (req, res, next) => {
     let rootByBisection, rootByNewton, rootBySecant, rootByRegulaFalsi;
+    rootByNewton = findRootByNewton();
     rootByBisection = findRootByBisection();
     rootBySecant = findRootBySecant();
     rootByRegulaFalsi = findRootByRegulaFalsi();
     console.log("Root By Bisection is ", rootByBisection);
+    console.log("Root By Newton is ", rootByNewton);
     console.log("Root By Secant is ", rootBySecant);
     console.log("Root By Regula Falsi is ", rootByRegulaFalsi);
 
+
     console.log("Function Response By Bisection is ", funX(rootByBisection));
+    console.log("Function Response By Newton is ", funX(rootByNewton));
     console.log("Function Response By By Secant is ", funX(rootBySecant));
     console.log("Function Response By Regula Falsi is ", funX(rootByRegulaFalsi));
 });
 
 function funX(x) {//sample function
     //function of which you want to find root hahah
-    let term1 = new Term(1,x,3);
-    let term2 = new Term(1,x,2);
-    let term3 = new Term(3,x,1);
-    let term4 = new Term(3);
+    let term1 = new Term(4,x,3);
+    let term2 = new Term(4,x,2);
+    let term3 = new Term(2,x,1);
+    let term4 = new Term(2);
      
 
-    return term1.constant*(term1.variable*term1.variable*term1.variable) + term2.constant*(term2.variable*term2.variable) - term3.constant*term3.variable - term4.constant;
+    return 4*(x * x * x)+4*(x * x)+2*x+2;
     //return 1*(x * x * x) + 1*(x * x) - 3*(x * 1) - 3;
 
     //return Math.sin(x)-5*x+2;
@@ -83,6 +87,24 @@ function findRootBySecant() {
     return x;
 }
 
+function funX_(x){
+    let term1 = new Term(12,x,2);
+    let term2 = new Term(8,x,1);
+    //let term3 = new Term(2,x,1);
+    let term4 = new Term(2);
+
+    // term1.derivate();
+    // term2.derivate();
+    // term3.derivate();
+    // term4.derivate();
+
+    return 12*(x*x)+8*x+2;
+
+
+
+
+}
+
 function regulaFalsi(x, y) {
     let numerator = (x * funX(y)) - (y * funX(x));
     let denominator = funX(y) - funX(x);
@@ -109,5 +131,26 @@ function findRootByRegulaFalsi() {
     return z;
 
 }
+
+function newton(x){
+    return x - (funX(x)/funX_(x));
+}
+
+function findRootByNewton(){
+    let x = 1;
+    let n = 0;
+
+    while (n<8){
+        x = newton(x);
+        n++;
+    }
+
+    return x;
+}
+
+
+
+
+
 
 
