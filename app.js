@@ -23,6 +23,7 @@ app.get('/',(req,res,next)=>{
 
 function funX(x){//sample function
     //function of which you want to find root
+    
     return (x*x*x)+(x*x)-3*x-3;
     
     //return Math.sin(x)-5*x+2;
