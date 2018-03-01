@@ -23,7 +23,7 @@ app.get('/', (req, res, next) => {
 });
 
 function funX(x) {//sample function
-    //function of which you want to find root
+    //function of which you want to find root hahah
     let term1 = new Term(1,x,3);
     let term2 = new Term(1,x,2);
     let term3 = new Term(3,x,1);
