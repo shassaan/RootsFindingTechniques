@@ -28,13 +28,13 @@ app.get('/', (req, res, next) => {
 
 function funX(x) {//sample function
     //function of which you want to find root hahah
-    let term1 = new Term(4,x,3);
-    let term2 = new Term(4,x,2);
-    let term3 = new Term(2,x,1);
+    let term1 = new Term(4, x, 3);
+    let term2 = new Term(4, x, 2);
+    let term3 = new Term(2, x, 1);
     let term4 = new Term(2);
-     
 
-    return 4*(x * x * x)+4*(x * x)+2*x+2;
+
+    return 4 * (x * x * x) + 4 * (x * x) + 2 * x + 2;
     //return 1*(x * x * x) + 1*(x * x) - 3*(x * 1) - 3;
 
     //return Math.sin(x)-5*x+2;
@@ -87,9 +87,9 @@ function findRootBySecant() {
     return x;
 }
 
-function funX_(x){
-    let term1 = new Term(12,x,2);
-    let term2 = new Term(8,x,1);
+function funX_(x) {
+    let term1 = new Term(12, x, 2);
+    let term2 = new Term(8, x, 1);
     //let term3 = new Term(2,x,1);
     let term4 = new Term(2);
 
@@ -98,7 +98,7 @@ function funX_(x){
     // term3.derivate();
     // term4.derivate();
 
-    return 12*(x*x)+8*x+2;
+    return 12 * (x * x) + 8 * x + 2;
 
 
 
@@ -132,15 +132,15 @@ function findRootByRegulaFalsi() {
 
 }
 
-function newton(x){
-    return x - (funX(x)/funX_(x));
+function newton(x) {
+    return x - (funX(x) / funX_(x));
 }
 
-function findRootByNewton(){
+function findRootByNewton() {
     let x = 1;
     let n = 0;
 
-    while (n<8){
+    while (n < 8) {
         x = newton(x);
         n++;
     }
